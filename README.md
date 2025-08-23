@@ -1,78 +1,82 @@
-# Archer Survival — 기술 소개서
+# Archer Survival — 기술 소개서 (확장판)
 
-## 프로젝트 개요
-- **장르:** 모바일 생존형 액션 RPG
-- **개발 목적:** Firebase + Google Play Games Services(GPGS) 연동 경험 및 오브젝트 풀링 기반 최적화
-- **컨셉:** 끊임없이 몰려오는 적을 상대하며 성장하는 아케이드형 RPG
+<p align="center">
+  <img src="docs/assets/hero.png" alt="게임 스크린샷" width="720">
+</p>
+
+<p align="center">
+  <b>Unity 기반 생존형 액션 RPG</b> — Firebase & Google Play Games Services 연동, 오브젝트 풀링 기반 최적화
+</p>
+
+---
+
+## 목차
+- [개요](#개요)
+- [핵심 기능](#핵심-기능)
+- [개발 환경](#개발-환경)
+- [시스템 구조](#시스템-구조)
+  - [아키텍처 다이어그램](#아키텍처-다이어그램)
+  - [폴더 구조](#폴더-구조)
+- [구현 상세](#구현-상세)
+  - [1) 계정/데이터 (Firebase)](#1-계정데이터-firebase)
+  - [2) 업적/랭킹 (GPGS)](#2-업적랭킹-gpgs)
+  - [3) 전투/자동타겟팅/총알](#3-전투자동타겟팅총알)
+  - [4) 오브젝트 풀링](#4-오브젝트-풀링)
+  - [5) 레벨업/스킬 시스템](#5-레벨업스킬-시스템)
+- [최적화 포인트](#최적화-포인트)
+- [문제 해결(트러블슈팅)](#문제-해결트러블슈팅)
+- [빌드 & 배포](#빌드--배포)
+- [향후 계획](#향후-계획)
+- [라이선스](#라이선스)
+
+---
+
+## 개요
+- **장르:** 모바일 생존형 액션 RPG  
+- **목표:**  
+  - Firebase + GPGS로 계정/데이터/업적 연동  
+  - 오브젝트 풀링(Object Pooling)으로 성능 안정화  
+  - 자동 전투 + 레벨업 + 스킬 선택의 성장감  
+- **핵심 키워드:** Unity 2022.3, Firebase Auth/Firestore, Google Play Games, Object Pool, Cinemachine
+
+---
+
+## 핵심 기능
+- **로그인/회원가입**: Firebase Auth (이메일/비번, GPGS 로그인 지원)  
+- **데이터 동기화**: Firestore에 코인/아이템/업적 저장  
+- **전투 시스템**: 자동 타겟팅 & 발사, 보스 패턴(돌진/360도 등)  
+- **성장 시스템**: EXP → 레벨업 → 스킬 선택 (예: FireBall, FF 추가발사)  
+- **최적화**: 총알/몬스터/EXP/코인 풀링으로 GC/프레임 드랍 최소화
 
 ---
 
 ## 개발 환경
-- **엔진:** Unity 2022.3.15f1  
-- **언어:** C#  
-- **서비스 연동:**  
-  - Firebase (Auth, Firestore)  
-  - Google Play Games Services (업적, 랭킹)  
-- **플랫폼:** Android (SDK API Level 32 이상)  
+- **Unity**: 2022.3.15f1  
+- **언어**: C#  
+- **SDK**: Android SDK API 32+  
+- **서비스**: Firebase(Auth/Firestore), Google Play Games Services(업적/랭킹)
 
 ---
 
-## 시스템 구조 및 구현
-### 핵심 기능
-- Firebase 로그인/회원가입 & Firestore 데이터 저장  
-- Google Play 업적/리더보드 연동  
-- 자동 이동/공격 시스템  
-- 경험치 & 레벨업 → 스킬 강화 (FireBall, FF 등)  
-- 보스 몬스터 패턴 (돌진, 회전 공격)  
-- 오브젝트 풀링 (총알, 몬스터, 아이템)  
+## 시스템 구조
 
-### 아키텍처
-- **GlobalValue:** 전역 데이터 관리 (레벨, 경험치, 코인, 아이템 등)  
-- **Firebase_Init / LogIn / UserData:** Firebase 초기화 & 데이터 동기화  
-- **PlayerCtrl / Bullet_Ctrl / Monster_Ctrl / Boss_Ctrl:** 게임 플레이 핵심 로직  
-- **ObjectPool_Mgr:** 오브젝트 풀링 매니저  
-- **GameMgr:** 씬 및 UI 관리  
-
-### 구현 상세
-- 자동 타겟팅 & 발사: ShootCtrl → Bullet_Ctrl  
-- EXP 획득 → 레벨업 → 스킬 선택 UI  
-- Destroy 대신 SetActive(false) 반환 → 풀링 최적화  
-- GPGS 업적: Social.ReportProgress 로 반영  
-
----
-
-## 문제 해결 및 개선
-- Firebase `google-services.json` 위치 문제 → `Assets/StreamingAssets`로 해결  
-- GPGS SDK & compileSdkVersion 충돌 → Gradle 설정 수정  
-- 메모리 누수 → 오브젝트 풀링 도입  
-
----
-
-## 성과 및 기대 효과
-- Firebase 로그인/데이터 저장 안정화  
-- GPGS 업적 및 랭킹 연동 완료  
-- 저사양에서도 원활한 성능 (FPS 안정화)  
-- 상용 서비스 가능 수준까지 개발 완료  
-
----
-
-## 향후 계획
-- 멀티플레이 모드 추가  
-- 신규 보스 및 스테이지 확장  
-- 업적 세분화, 주간/월간 리더보드  
-- 정식 출시 및 이벤트 운영  
-
----
-
-## 아키텍처 다이어그램
+### 아키텍처 다이어그램
 ```mermaid
 flowchart LR
+  subgraph Gameplay
     PlayerCtrl --> ShootCtrl --> Bullet_Ctrl
     PlayerCtrl --> GlobalValue
     Monster_Ctrl --> GlobalValue
     Boss_Ctrl --> GlobalValue
     ObjectPool_Mgr --> Bullet_Ctrl
     GameMgr --> UI
-    Firebase_LogIn --> Firebase[Firebase]
-    Firebase_UserData --> Firebase
+  end
 
+  subgraph Backend
+    Firebase_Init --> Firebase[(Firebase)]
+    Firebase_LogIn --> Firebase
+    Firebase_UserData --> Firebase
+  end
+
+  UI --> GameMgr
+  GlobalValue <--> Firebase_UserData
