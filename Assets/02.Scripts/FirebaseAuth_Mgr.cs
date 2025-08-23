@@ -1,143 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using Firebase.Auth;
-//using UnityEngine.UI;
-//using GooglePlayGames;
-//using GooglePlayGames.BasicApi;
-//using Firebase.Extensions;
-//using UnityEngine.SocialPlatforms;
-//using Firebase;
-
-//public class FirebaseAuth_Mgr : MonoBehaviour
-//{
-//    private FirebaseAuth auth;
-//    private FirebaseUser user;
-
-//    public InputField Email;
-//    public InputField Password;
-
-//    private bool firebaseReady = false;
-
-//    void Awake()
-//    {
-//        InitGPGS();
-//        InitFirebase();
-//    }
-//    void InitGPGS()
-//    {
-//        var config = new PlayGamesClientConfiguration.Builder()
-//            .RequestEmail()
-//            .RequestIdToken()
-//            .Build();
-
-//        PlayGamesPlatform.InitializeInstance(config);
-//        PlayGamesPlatform.DebugLogEnabled = true;
-//        PlayGamesPlatform.Activate();
-//    }
-
-//    void InitFirebase()
-//    {
-//        FirebaseApp.CheckAndFixDependenciesAsync()
-//            .ContinueWithOnMainThread(task =>
-//            {
-//                if (task.Result == DependencyStatus.Available)
-//                {
-//                    auth = FirebaseAuth.DefaultInstance;
-//                    firebaseReady = true;
-//                    Debug.Log("[Firebase] ÃÊ±âÈ­ ¼º°ø");
-//                }
-//                else
-//                {
-//                    Debug.LogError("[Firebase] ÃÊ±âÈ­ ½ÇÆĞ: " + task.Result);
-//                }
-//            });
-//    }
-
-//    public void TryGLogin()
-//    {
-//        PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, status =>
-//        {
-//            if (status == SignInStatus.Success)
-//            {
-//                Debug.Log("[GPGS] ·Î±×ÀÎ ¼º°ø");
-//                StartCoroutine(TryFBLogin());
-//            }
-//            else
-//            {
-//                Debug.LogError("[GPGS] ·Î±×ÀÎ ½ÇÆĞ: " + status);
-//            }
-//        });
-//    }
-
-//    public void TryFBCreate()
-//    {
-//        if (!firebaseReady) { Debug.LogError("[Firebase] ¾ÆÁ÷ ÃÊ±âÈ­ Àü"); return; }
-//        if (string.IsNullOrEmpty(Email.text) || string.IsNullOrEmpty(Password.text))
-//        {
-//            Debug.LogError("[Firebase] ÀÌ¸ŞÀÏ/ºñ¹Ğ¹øÈ£°¡ ºñ¾î ÀÖÀ½");
-//            return;
-//        }
-
-//        auth.CreateUserWithEmailAndPasswordAsync(Email.text, Password.text)
-//            .ContinueWithOnMainThread(task =>
-//            {
-//                if (task.IsCanceled)
-//                {
-//                    Debug.LogError("[Firebase] È¸¿ø°¡ÀÔ Ãë¼Ò");
-//                    return;
-//                }
-//                if (task.IsFaulted)
-//                {
-//                    Debug.LogError("[Firebase] È¸¿ø°¡ÀÔ ½ÇÆĞ: " + task.Exception);
-//                    return; // ¡Ú Á¶±â ¹İÈ¯
-//                }
-
-//                FirebaseUser newUser = task.Result.User;
-//                Debug.Log("[Firebase] È¸¿ø°¡ÀÔ ¼º°ø: " + newUser.UserId);
-//            });
-//    }
-
-//    IEnumerator TryFBLogin()
-//    {
-//        if (!firebaseReady)
-//        {
-//            Debug.LogError("[Firebase] ¾ÆÁ÷ ÃÊ±âÈ­ Àü");
-//            yield break;
-//        }
-
-//        var localUser = (PlayGamesLocalUser)Social.localUser;
-
-//        // ID ÅäÅ«ÀÌ ÁØºñµÉ ¶§±îÁö ´ë±â
-//        while (string.IsNullOrEmpty(localUser.GetIdToken()))
-//        {
-//            yield return null;
-//        }
-
-//        string idToken = localUser.GetIdToken();
-
-//        Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
-
-//        auth.SignInWithCredentialAsync(credential)
-//            .ContinueWithOnMainThread(task =>
-//            {
-//                if (task.IsCanceled)
-//                {
-//                    Debug.LogError("[Firebase] ±¸±Û ÀÚ°İÁõ¸í ·Î±×ÀÎ Ãë¼Ò");
-//                    return;
-//                }
-//                if (task.IsFaulted)
-//                {
-//                    Debug.LogError("[Firebase] ±¸±Û ÀÚ°İÁõ¸í ·Î±×ÀÎ ½ÇÆĞ: " + task.Exception);
-//                    return;
-//                }
-
-//                user = task.Result;
-//                Debug.Log("[Firebase] ±¸±Û ÀÚ°İÁõ¸í ·Î±×ÀÎ ¼º°ø: " + user.UserId);
-//            });
-//    }
-//}
-
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase;
@@ -170,7 +30,7 @@ public class FirebaseAuth_Mgr : MonoBehaviour
 
     void InitGPGS()
     {
-        //´õ ÀÌ»ó config ÇÊ¿ä ¾øÀ½
+        //ë” ì´ìƒ config í•„ìš” ì—†ìŒ
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
     }
@@ -183,11 +43,11 @@ public class FirebaseAuth_Mgr : MonoBehaviour
             {
                 auth = FirebaseAuth.DefaultInstance;
                 firebaseReady = true;
-                Debug.Log("[Firebase] ÃÊ±âÈ­ ¼º°ø");
+                Debug.Log("[Firebase] ì´ˆê¸°í™” ì„±ê³µ");
             }
             else
             {
-                Debug.LogError("[Firebase] ÃÊ±âÈ­ ½ÇÆĞ: " + task.Result);
+                Debug.LogError("[Firebase] ì´ˆê¸°í™” ì‹¤íŒ¨: " + task.Result);
             }
         });
     }
@@ -198,28 +58,28 @@ public class FirebaseAuth_Mgr : MonoBehaviour
         {
             if (status == SignInStatus.Success)
             {
-                Debug.Log("[GPGS] ·Î±×ÀÎ ¼º°ø");
+                Debug.Log("[GPGS] ë¡œê·¸ì¸ ì„±ê³µ");
                 LinkWithFirebase();
                 LogIn_UI.SetActive(false);
                 Play_UI.SetActive(true);
             }
             else
             {
-                Debug.LogError("[GPGS] ·Î±×ÀÎ ½ÇÆĞ");
+                Debug.LogError("[GPGS] ë¡œê·¸ì¸ ì‹¤íŒ¨");
             }
         });
     }
 
-    // Firebase¿Í ¿¬µ¿
+    // Firebaseì™€ ì—°ë™
     private void LinkWithFirebase()
     {
-        if (!firebaseReady) { Debug.LogError("[Firebase] ¾ÆÁ÷ ÃÊ±âÈ­ Àü"); return; }
+        if (!firebaseReady) { Debug.LogError("[Firebase] ì•„ì§ ì´ˆê¸°í™” ì „"); return; }
 
         PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
         {
             if (string.IsNullOrEmpty(code))
             {
-                Debug.LogError("[GPGS] ServerAuthCode ¾øÀ½");
+                Debug.LogError("[GPGS] ServerAuthCode ì—†ìŒ");
                 return;
             }
 
@@ -230,12 +90,12 @@ public class FirebaseAuth_Mgr : MonoBehaviour
             {
                 if (task.IsCanceled || task.IsFaulted)
                 {
-                    Debug.LogError("[Firebase] ·Î±×ÀÎ ½ÇÆĞ: " + task.Exception);
+                    Debug.LogError("[Firebase] ë¡œê·¸ì¸ ì‹¤íŒ¨: " + task.Exception);
                 }
                 else
                 {
                     user = task.Result;
-                    Debug.Log("[Firebase] ·Î±×ÀÎ ¼º°ø: " + user.UserId);
+                    Debug.Log("[Firebase] ë¡œê·¸ì¸ ì„±ê³µ: " + user.UserId);
                     LogIn_UI.SetActive(false);
                     Play_UI.SetActive(true);
                 }
@@ -243,27 +103,27 @@ public class FirebaseAuth_Mgr : MonoBehaviour
         });
     }
 
-    // ÀÌ¸ŞÀÏ È¸¿ø°¡ÀÔ
+    // ì´ë©”ì¼ íšŒì›ê°€ì…
     public void TryFBLogin()
     {
-        if (!firebaseReady) { Debug.LogError("[Firebase] ¾ÆÁ÷ ÃÊ±âÈ­ Àü"); return; }
+        if (!firebaseReady) { Debug.LogError("[Firebase] ì•„ì§ ì´ˆê¸°í™” ì „"); return; }
 
         auth.SignInWithEmailAndPasswordAsync(Email.text, Password.text)
             .ContinueWithOnMainThread(task =>
             {
                 if (task.IsCanceled)
                 {
-                    Debug.LogError("[Firebase] ·Î±×ÀÎ Ãë¼Ò");
+                    Debug.LogError("[Firebase] ë¡œê·¸ì¸ ì·¨ì†Œ");
                     return;
                 }
                 if (task.IsFaulted)
                 {
-                    Debug.LogError("[Firebase] ·Î±×ÀÎ ½ÇÆĞ: " + task.Exception);
+                    Debug.LogError("[Firebase] ë¡œê·¸ì¸ ì‹¤íŒ¨: " + task.Exception);
                     return;
                 }
 
                 FirebaseUser loginUser = task.Result.User;
-                Debug.Log("[Firebase] ·Î±×ÀÎ ¼º°ø: " + loginUser.UserId);
+                Debug.Log("[Firebase] ë¡œê·¸ì¸ ì„±ê³µ: " + loginUser.UserId);
                 LogIn_UI.SetActive(false);
                 Play_UI.SetActive(true);
             });
