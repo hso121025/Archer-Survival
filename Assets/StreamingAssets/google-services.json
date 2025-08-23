@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "398504453606",
+    "project_id": "acher-survival",
+    "storage_bucket": "acher-survival.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398504453606:android:66f21616ea261c449c2227",
+        "android_client_info": {
+          "package_name": "com.Hong_Comp.AcherSurvival"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398504453606-8bshq25c831kgoj0t2m2h6jfbnv51f0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Hong_Comp.AcherSurvival",
+            "certificate_hash": "3c7313eaee3d7d505e42184903cbed10e98c10b7"
+          }
+        },
+        {
+          "client_id": "398504453606-f05m8irdqhd50ii3hkghfq3j57lngl5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Hong_Comp.AcherSurvival",
+            "certificate_hash": "5471bb8cb374e8b78730084d847550372a253377"
+          }
+        },
+        {
+          "client_id": "398504453606-1e61drs8dps10b1sju0hjpl0tmg9gml8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4UwieEdnIYk6ARSFjhrEIQFopPJGyAYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398504453606-1e61drs8dps10b1sju0hjpl0tmg9gml8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

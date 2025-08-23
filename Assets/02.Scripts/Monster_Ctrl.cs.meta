@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 87c59b36622d6cc41a17ba8984657d4f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MonsterDieSound: {fileID: 8300000, guid: 1548f1ddeda72d841afc5363542549fe, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
