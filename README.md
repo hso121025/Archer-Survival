@@ -136,9 +136,13 @@ flowchart LR
 - **흐름:** Init → Login → UserData 로드 → 진행 중 데이터 저장  
 
 📌 **추천 삽입 포인트**  
-- Firebase Auth 로그인 코드 조각  
 - Firestore에 저장된 JSON 문서 예시  
 - Firebase 콘솔 스크린샷 (`docs/assets/firebase-flow.png`)
+
+  ```csharp
+// 파일: Firebase_UserData.cs (발췌)
+var doc = db.Collection("users").Document(uid);
+await doc.SetAsync(new Dictionary<string, object>{{"coin", coin},{"items", items}});
 
 ---
 
