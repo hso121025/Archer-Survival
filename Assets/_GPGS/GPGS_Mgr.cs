@@ -12,8 +12,22 @@ public class GPGS_Mgr : MonoBehaviour
     public GameObject LogIn_UI;
     public GameObject Play_UI;
 
-    // Start is called before the first frame update
-    void Start()
+    public static GPGS_Mgr Inst;
+
+    private void Awake()
+    {
+        if (Inst != null && Inst != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Inst = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+        // Start is called before the first frame update
+        void Start()
     {
         PlayGamesPlatform.Activate();
         GPGS_LogIn();
@@ -72,6 +86,45 @@ public class GPGS_Mgr : MonoBehaviour
     public void UnlockingGPGSAchevement()
     {
         PlayGamesPlatform.Instance.UnlockAchievement(GPGSIds.achievement__stage_02_clear, (bool success) => { });
+    }
+
+
+
+    public void OnStage1Cleared()
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement(GPGSIds.achievement__stage_01_clear, success =>
+        {
+            Debug.Log("[GPGS] Stage 01 Clear Unlock: " + success);
+
+            if (success)
+            {
+                // 다음 단계 업적을 'Reveal' (초기 Hidden이면 공개 처리)
+                PlayGamesPlatform.Instance.RevealAchievement(GPGSIds.achievement__stage_02_clear, r =>
+                {
+                    Debug.Log("[GPGS] Reveal Stage 02 Achievement: " + r);
+                });
+            }
+        });
+    }
+
+    public void OnStage2Cleared()
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement(GPGSIds.achievement__stage_02_clear, success =>
+        {
+            Debug.Log("[GPGS] Stage 02 Clear Unlock: " + success);
+        });
+    }
+
+    public void ReportTotalKill()
+    {
+        long kills = GlobalValue.Inst.totalKill;  // GlobalValue에서 총합 킬 수 가져오기
+        PlayGamesPlatform.Instance.ReportScore(
+            kills,
+            GPGSIds.leaderboard_kill_count,       // 콘솔에서 발급받은 리더보드 ID
+            (bool success) =>
+            {
+                Debug.Log("[GPGS] TotalKill Reported: " + kills + " / success: " + success);
+            });
     }
 }
 

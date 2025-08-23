@@ -178,7 +178,7 @@ public class GameMgr : MonoBehaviour
             }
             else
             {
-
+                GPGS_Mgr.Inst.OnStage1Cleared();
                 Timer = Resettimer;
                 SceneManager.LoadScene("00.UIScene");
                 SceneManager.LoadScene("03.Stage2", LoadSceneMode.Additive);
@@ -196,8 +196,8 @@ public class GameMgr : MonoBehaviour
                 TimerText.text = $"{minutes:00}:{seconds:00}";
             }
             else
-            { 
-
+            {
+                GPGS_Mgr.Inst.OnStage2Cleared();
                 Timer = Resettimer;
                 SceneManager.LoadScene("00.UIScene");
                 SceneManager.LoadScene("04.Boss", LoadSceneMode.Additive);

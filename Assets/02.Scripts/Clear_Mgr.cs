@@ -39,6 +39,9 @@ public class Clear_Mgr : MonoBehaviour
 
         ShowSkillCounts();
 
+        GPGS_Mgr.Inst.ReportTotalKill();
+
+
         Stage1Kill.text = stage1Kills.ToString();
         Stage2Kill.text = stage2Kills.ToString();
         TotalKill.text = totalKill.ToString();
