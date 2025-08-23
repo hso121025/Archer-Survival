@@ -154,7 +154,7 @@ flowchart LR
 ---
 
 ### 3) 전투/자동타겟팅/총알
-- **타겟팅:** `ShootCtrl` → 가까운 몬스터 탐색, 방향 계산  [ShootCtrl.cs (발사 로직, lines 20–50)](https://github.com/hso121025/Archer-Survival/blob/main/Assets/01.Scripts/Gameplay/ShootCtrl.cs#L20-L50)
+- **타겟팅:** `ShootCtrl` → 가까운 몬스터 탐색, 방향 계산  [ShootCtrl.cs (발사 로직, lines 20–50)](https://github.com/hso121025/Archer-Survival/blob/main/Assets/01.Scripts/ShootCtrl.cs#L20-L50)
 - **투사체:** `Bullet_Ctrl` → 전진, 수명, 충돌 처리 후 풀 반환  
 - **적 처리:** `Monster_Ctrl` → 추적, 피격, 사망 시 아이템 드랍  
 
