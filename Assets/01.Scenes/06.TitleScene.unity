@@ -1819,7 +1819,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Achievement
+  m_Text: "\uC5C5\uC801"
 --- !u!222 &966016937
 CanvasRenderer:
   m_ObjectHideFlags: 0
