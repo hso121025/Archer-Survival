@@ -66,58 +66,54 @@
 ```mermaid
 flowchart LR
   %% ======= Gameplay (Client) =======
-  subgraph G[Gameplay (Client)]
-    PlayerCtrl[PlayerCtrl]
-    ShootCtrl[ShootCtrl]
-    Bullet[Bullet_Ctrl]
-    Monster[Monster_Ctrl]
-    Boss[Boss_Ctrl]
-    Pool[ObjectPool_Mgr]
-    GameMgr[GameMgr]
-    Global[GlobalValue]
-    UI[UI / HUD]
+  subgraph G[Gameplay_Client]
+    PlayerCtrl
+    ShootCtrl
+    Bullet_Ctrl
+    Monster_Ctrl
+    Boss_Ctrl
+    ObjectPool_Mgr
+    GameMgr
+    GlobalValue
+    UI
   end
 
   %% ======= Backend (Cloud) =======
-  subgraph B[Backend (Cloud)]
-    Firebase[(Firebase Project)]
+  subgraph B[Backend_Cloud]
+    Firebase_Init
+    Firebase_LogIn
+    Firebase_UserData
+    Firestore[(Firestore)]
     Auth[(Auth)]
-    Store[(Firestore)]
-    FBInit[Firebase_Init]
-    FBLogin[Firebase_LogIn]
-    FBUser[Firebase_UserData]
   end
 
   %% ======= External =======
-  subgraph S[External Services]
-    GPGS[Google Play Games Services]
+  subgraph S[External_Services]
+    GPGS[Google_Play_Games]
   end
 
   %% Gameplay wiring
-  PlayerCtrl --> ShootCtrl --> Bullet
-  Pool --> Bullet
-  Pool --> Monster
-  PlayerCtrl --> Global
-  Monster --> Global
-  Boss --> Global
+  PlayerCtrl --> ShootCtrl --> Bullet_Ctrl
+  ObjectPool_Mgr --> Bullet_Ctrl
+  ObjectPool_Mgr --> Monster_Ctrl
+  PlayerCtrl --> GlobalValue
+  Monster_Ctrl --> GlobalValue
+  Boss_Ctrl --> GlobalValue
   GameMgr --> UI
-  GameMgr --> Global
+  GameMgr --> GlobalValue
 
   %% Backend wiring
-  FBInit --> Firebase
-  FBInit --> Auth
-  FBInit --> Store
-  FBLogin --> Auth
-  FBUser <--> Store
-  Global <--> FBUser
+  Firebase_Init --> Auth
+  Firebase_Init --> Firestore
+  Firebase_LogIn --> Auth
+  Firebase_UserData <--> Firestore
+  GlobalValue <--> Firebase_UserData
 
   %% External
   GameMgr --> GPGS
   GPGS ---|Achievements/Leaderboards| GameMgr
+
 ```
-
-
----
 
 ## 폴더 구조
 - `Assets/01.Scripts/Managers`: `GameMgr`, `ObjectPool_Mgr`  
