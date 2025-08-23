@@ -62,9 +62,66 @@
 - **Backend:** `Firebase_Init` → `Firebase_LogIn` → `Firebase_UserData`  
 - **GlobalValue:** 전역 상태 관리 + Firestore 동기화  
 
-📌 **추천 삽입 포인트**  
-- 아키텍처 다이어그램 (`docs/assets/architecture.png`)  
-- 클래스 간 의존 관계를 Mermaid 다이어그램으로 표현
+flowchart LR
+  %% ========= Direction & Groups =========
+  %% Left-to-Right
+  %% Group 1: Gameplay (Client)
+  subgraph G[Gameplay (Client)]
+    PlayerCtrl[PlayerCtrl]
+    ShootCtrl[ShootCtrl]
+    Bullet[Bullet_Ctrl]
+    Monster[Monster_Ctrl]
+    Boss[Boss_Ctrl]
+    Pool[ObjectPool_Mgr]
+    GameMgr[GameMgr]
+    Global[GlobalValue]
+    UI[UI / HUD]
+  end
+
+  %% Group 2: Backend (Cloud)
+  subgraph B[Backend (Cloud)]
+    FirebaseProj[(Firebase Project)]
+    Auth[(Auth)]
+    Store[(Firestore)]
+    FBInit[Firebase_Init]
+    FBLogin[Firebase_LogIn]
+    FBUser[Firebase_UserData]
+  end
+
+  %% Group 3: External Services
+  subgraph S[External Services]
+    GPGS[Google Play Games Services]
+  end
+
+  %% ========= Gameplay Wiring =========
+  PlayerCtrl --> ShootCtrl --> Bullet
+  Pool --> Bullet
+  Pool --> Monster
+  PlayerCtrl --> Global
+  Monster --> Global
+  Boss --> Global
+  GameMgr --> UI
+  GameMgr --> Global
+
+  %% ========= Backend Wiring =========
+  FBInit --> FirebaseProj
+  FBInit --> Auth
+  FBInit --> Store
+  FBLogin --> Auth
+  FBUser <--> Store
+  Global <--> FBUser
+
+  %% ========= External Services =========
+  GameMgr --> GPGS
+  GPGS ---|Achievements/Leaderboards| GameMgr
+
+  %% ========= Notes =========
+  classDef dim fill:#eee,stroke:#bbb,color:#333;
+  classDef none fill:transparent,stroke:#bbb,color:#555,stroke-dasharray: 3 3;
+
+  %% Optional decorative notes (comment out if noisy)
+  %% note right of ShootCtrl: Targeting & Fire cooldown
+  %% note right of Pool: Get(key) / Return(obj)
 
 ---
 
