@@ -29,8 +29,9 @@
 - **장르:** 모바일 생존형 액션 RPG  
 - **핵심 목표:** Firebase + GPGS로 계정/데이터/업적 안정 연동, 오브젝트 풀링으로 저사양 기기에서도 프레임 안정화, 자동 전투 + 레벨업 + 스킬 선택으로 빠른 성장감 제공  
 
-📌 **추천 삽입 포인트**  
-- 대표 스크린샷 또는 플레이 GIF (`docs/assets/hero.png`)
+<p align="center">
+  <img src="docs/assets/hero.png" width="720" alt="게임 대표 이미지">
+</p>
 
 ---
 
