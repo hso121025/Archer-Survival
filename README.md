@@ -63,10 +63,9 @@
 - **GlobalValue:** 전역 상태 관리 + Firestore 동기화  
 
 <!-- Mermaid 다이어그램 -->
+```mermaid
 flowchart LR
-  %% ========= Direction & Groups =========
-  %% Left-to-Right
-  %% Group 1: Gameplay (Client)
+  %% ======= Gameplay (Client) =======
   subgraph G[Gameplay (Client)]
     PlayerCtrl[PlayerCtrl]
     ShootCtrl[ShootCtrl]
@@ -79,9 +78,9 @@ flowchart LR
     UI[UI / HUD]
   end
 
-  %% Group 2: Backend (Cloud)
+  %% ======= Backend (Cloud) =======
   subgraph B[Backend (Cloud)]
-    FirebaseProj[(Firebase Project)]
+    Firebase[(Firebase Project)]
     Auth[(Auth)]
     Store[(Firestore)]
     FBInit[Firebase_Init]
@@ -89,12 +88,12 @@ flowchart LR
     FBUser[Firebase_UserData]
   end
 
-  %% Group 3: External Services
+  %% ======= External =======
   subgraph S[External Services]
     GPGS[Google Play Games Services]
   end
 
-  %% ========= Gameplay Wiring =========
+  %% Gameplay wiring
   PlayerCtrl --> ShootCtrl --> Bullet
   Pool --> Bullet
   Pool --> Monster
@@ -104,25 +103,19 @@ flowchart LR
   GameMgr --> UI
   GameMgr --> Global
 
-  %% ========= Backend Wiring =========
-  FBInit --> FirebaseProj
+  %% Backend wiring
+  FBInit --> Firebase
   FBInit --> Auth
   FBInit --> Store
   FBLogin --> Auth
   FBUser <--> Store
   Global <--> FBUser
 
-  %% ========= External Services =========
+  %% External
   GameMgr --> GPGS
   GPGS ---|Achievements/Leaderboards| GameMgr
+```
 
-  %% ========= Notes =========
-  classDef dim fill:#eee,stroke:#bbb,color:#333;
-  classDef none fill:transparent,stroke:#bbb,color:#555,stroke-dasharray: 3 3;
-
-  %% Optional decorative notes (comment out if noisy)
-  %% note right of ShootCtrl: Targeting & Fire cooldown
-  %% note right of Pool: Get(key) / Return(obj)
 
 ---
 
