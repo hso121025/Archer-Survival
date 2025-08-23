@@ -62,6 +62,7 @@
 - **Backend:** `Firebase_Init` → `Firebase_LogIn` → `Firebase_UserData`  
 - **GlobalValue:** 전역 상태 관리 + Firestore 동기화  
 
+<!-- Mermaid 다이어그램 -->
 flowchart LR
   %% ========= Direction & Groups =========
   %% Left-to-Right
