@@ -24,7 +24,7 @@
 - [라이선스](#라이선스)
 
 ---
-[ShootCtrl.cs (permalink)](https://github.com/hso121025/Archer-Survival/blob/ce5e0ba.../Assets/Scripts/Gameplay/ShootCtrl.cs#L20-L50)
+
 ## 개요
 - **장르:** 모바일 생존형 액션 RPG  
 - **핵심 목표:** Firebase + GPGS로 계정/데이터/업적 안정 연동, 오브젝트 풀링으로 저사양 기기에서도 프레임 안정화, 자동 전투 + 레벨업 + 스킬 선택으로 빠른 성장감 제공  
