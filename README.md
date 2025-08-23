@@ -135,10 +135,13 @@ flowchart LR
 - **저장/로드:** Firestore에 코인, 아이템, 업적 저장 → 앱 시작 시 로드  
 - **흐름:** Init → Login → UserData 로드 → 진행 중 데이터 저장  
 
+- **Firebase Auth 로그인 코드 예시**  
+  📄 [FirebaseAuth_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs)
+  
 📌 **추천 삽입 포인트**  
 - Firestore에 저장된 JSON 문서 예시  
 - Firebase 콘솔 스크린샷 (`docs/assets/firebase-flow.png`)
-- Firebase Auth 로그인 코드 예시
+- //Firebase Auth 로그인 코드 예시
 
 ---
 
@@ -147,21 +150,28 @@ flowchart LR
 - **업적 달성:** `Social.ReportProgress(achievementId, 100.0, ...)` 호출  
 - **리더보드:** `Social.ShowLeaderboardUI()`로 표시  
 
+- **업적 달성 시도 코드 (GPGS 연동 포인트)**  
+  📄 [FirebaseAuth_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs)
+  
 📌 **추천 삽입 포인트**  
-- 업적 달성 시도 코드 조각  
+- //업적 달성 시도 코드 조각  
 - 리더보드 UI 캡처 화면
 
 ---
 
 ### 3) 전투/자동타겟팅/총알
-- **타겟팅:** `ShootCtrl` → 가까운 몬스터 탐색, 방향 계산  [ShootCtrl.cs (발사 로직, lines 20–50)](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/ShootCtrl.cs#L20-L50)
+- **타겟팅:** `ShootCtrl` → 가까운 몬스터 탐색, 방향 계산 
 - **투사체:** `Bullet_Ctrl` → 전진, 수명, 충돌 처리 후 풀 반환  
 - **적 처리:** `Monster_Ctrl` → 추적, 피격, 사망 시 아이템 드랍  
 
+- **ShootCtrl.FindNearestEnemy()**  
+  📄 [ShootCtrl.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/ShootCtrl.cs)
+- **총알 발사 코드 (FirePos 사용)**  
+  📄 [ShootCtrl.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/ShootCtrl.cs)
+
 📌 **추천 삽입 포인트**  
-- `ShootCtrl.FindNearestEnemy()` 코드 조각
-- 총알 발사 코드 (FirePos 사용)  
-- 전투 루프 다이어그램 (`docs/assets/combat-loop.png`)
+- //`ShootCtrl.FindNearestEnemy()` 코드 조각
+- //총알 발사 코드 (FirePos 사용)  
 
 ---
 
@@ -170,8 +180,12 @@ flowchart LR
 - **매니저:** `ObjectPool_Mgr` → `Get(key)`, `Return(obj)` 관리  
 - **적용 범위:** 총알, 몬스터, EXP/코인 등  
 
+- **풀링 매니저 (`Get` / `Return`)**  
+  📄 [BulletPool_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/BulletPool_Mgr.cs)  
+  📄 [EXPPool_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/EXPPool_Mgr.cs)
+
 📌 **추천 삽입 포인트**  
-- 풀링 매니저 코드 조각 (`Get`/`Return`)  
+- //풀링 매니저 코드 조각 (`Get`/`Return`)  
 - 풀링 구조 이미지 (`docs/assets/pooling.png`)
 
 ---
@@ -182,9 +196,15 @@ flowchart LR
 - **스킬 선택:** UI 표시 → 선택 즉시 반영  
 - **예시 스킬:** `FireBall_FF`: 직전 발사 수만큼 추가 발사  
 
+- **GlobalValue.AddExp() / 성장 루프**  
+  📄 [GlobalValue.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/GlobalValue.cs)  
+  📄 [GameMgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/GameMgr.cs)
+- **FireBall_FF 추가 발사 처리**  
+  📄 [Skill_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/Skill_Mgr.cs)
+  
 📌 **추천 삽입 포인트**  
-- `GlobalValue.AddExp()` 코드 조각  
-- FireBall_FF 추가 발사 처리 코드  
+- //`GlobalValue.AddExp()` 코드 조각  
+- //FireBall_FF 추가 발사 처리 코드  
 - 레벨업/스킬 선택 UI 캡처 (`docs/assets/levelup-skill.png`)
 
 ---
