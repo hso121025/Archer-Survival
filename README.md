@@ -159,7 +159,7 @@ flowchart LR
 - **적 처리:** `Monster_Ctrl` → 추적, 피격, 사망 시 아이템 드랍  
 
 📌 **추천 삽입 포인트**  
-- `ShootCtrl.FindNearestEnemy()` 코드 조각  
+- `ShootCtrl.FindNearestEnemy()` 코드 조각  [ShootCtrl.cs (발사 로직)](Assets/01.Scripts/Gameplay/ShootCtrl.cs#L20-L50) 
 - 총알 발사 코드 (FirePos 사용)  
 - 전투 루프 다이어그램 (`docs/assets/combat-loop.png`)
 
