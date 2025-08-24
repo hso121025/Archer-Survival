@@ -42,8 +42,9 @@
 - **성장 루프:** EXP → 레벨업 → 스킬 선택(예: `FireBall`, `FireBall_FF`)  
 - **최적화:** 총알/몬스터/EXP/코인에 오브젝트 풀 적용으로 GC/프레임 드랍 최소화  
 
-📌 **추천 삽입 포인트**  
-- 기능별 UI/게임플레이 캡처 (예: 로그인 UI, 전투 화면, 스킬 선택 화면)
+<p align="center">
+  <img src="docs/assets/hero.png" width="720" alt="게임 대표 이미지">
+</p>
 
 ---
 
