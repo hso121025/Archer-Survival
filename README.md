@@ -133,6 +133,10 @@ flowchart LR
   <img src="docs/assets/Firebase.png" width="720" alt="Firebase 이미지">
 </p>
 
+<p align="center">
+  <img src="docs/assets/firebase.png" width="720" alt="firebase 이미지">
+</p>
+
 ---
 
 ### 2) 업적/랭킹 (GPGS)
