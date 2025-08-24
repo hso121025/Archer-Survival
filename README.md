@@ -42,19 +42,12 @@
 - **성장 루프:** EXP → 레벨업 → 스킬 선택(예: `FireBall`, `FireBall_FF`)  
 - **최적화:** 총알/몬스터/EXP/코인에 오브젝트 풀 적용으로 GC/프레임 드랍 최소화  
 
-<p align="center">
-  <img src="docs/assets/레벨업.png" width="720" alt="레벨업 UI">
-</p>
-
 ---
 
 ## 개발 환경
 - **엔진/언어:** Unity `2022.3.15f1`, C#  
 - **서비스 연동:** Firebase(`Auth`, `Firestore`), Google Play Games Services  
 - **플랫폼:** Android(`minSdk` 프로젝트 설정 기준, `compileSdk 34` 대응)  
-
-📌 **추천 삽입 포인트**  
-- Unity 버전/빌드 세팅 화면 (`docs/assets/build-settings.png`)
 
 ---
 
@@ -124,9 +117,6 @@ flowchart LR
 - `StreamingAssets`: `google-services.json`  
 - `docs/assets`: 문서용 이미지  
 
-📌 **추천 삽입 포인트**  
-- 실제 프로젝트 폴더 스크린샷
-
 ---
 
 ## 구현 상세
@@ -139,10 +129,9 @@ flowchart LR
 - **Firebase Auth 로그인 코드 예시**  
   📄 [FirebaseAuth_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs)
   
-📌 **추천 삽입 포인트**  
-- Firestore에 저장된 JSON 문서 예시  
-- Firebase 콘솔 스크린샷 (`docs/assets/firebase-flow.png`)
-- //Firebase Auth 로그인 코드 예시
+<p align="center">
+  <img src="docs/assets/firebase.png" width="720" alt="게임 대표 이미지">
+</p>
 
 ---
 
