@@ -143,9 +143,13 @@ flowchart LR
 - **업적 달성 시도 코드 (GPGS 연동 포인트)**  
   📄 [FirebaseAuth_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs)
   
-📌 **추천 삽입 포인트**  
-- //업적 달성 시도 코드 조각  
-- 리더보드 UI 캡처 화면
+<p align="center">
+  <img src="docs/assets/업적.png" width="720" alt="업적 이미지">
+</p>
+
+<p align="center">
+  <img src="docs/assets/리더보드.png" width="720" alt="리더보드 이미지">
+</p>
 
 ---
 
