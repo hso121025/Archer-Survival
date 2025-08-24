@@ -43,7 +43,7 @@
 - **최적화:** 총알/몬스터/EXP/코인에 오브젝트 풀 적용으로 GC/프레임 드랍 최소화  
 
 <p align="center">
-  <img src="docs/assets/hero.png" width="720" alt="게임 대표 이미지">
+  <img src="docs/assets/레벨업.png" width="720" alt="레벨업 UI">
 </p>
 
 ---
