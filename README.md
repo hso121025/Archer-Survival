@@ -200,9 +200,6 @@ flowchart LR
 - **Physics:** 충돌 매트릭스 최적화  
 - **UI:** 값 변경 이벤트 기반 갱신  
 
-📌 **추천 삽입 포인트**  
-- 풀링 적용 전/후 프로파일러 비교 캡처
-
 ---
 
 ## 문제 해결
@@ -210,10 +207,6 @@ flowchart LR
 - **GPGS/Gradle 충돌:** `compileSdkVersion` 조정, gradle.properties 수정  
 - **프레임 드랍:** `Destroy()` 남발 → 풀링 전환  
 - **AI 타겟팅 문제:** 캐싱 및 널 가드 처리  
-
-📌 **추천 삽입 포인트**  
-- 에러 로그/Logcat 캡처 (`docs/assets/debug-errors.png`)  
-- 문제 발생 전후 비교 이미지
 
 ---
 
@@ -225,9 +218,13 @@ flowchart LR
   - Google Play Console 업로드(버전 코드 증가)  
   - GPGS 업적/리더보드 ID 연결, SHA-1 등록  
 
-📌 **추천 삽입 포인트**  
-- Build Settings 캡처 (`docs/assets/build-settings.png`)  
-- Google Play Console 업로드 화면
+<p align="center">
+  <img src="docs/assets/Project Setting.png" width="720" alt="Project Setting">
+</p>
+
+<p align="center">
+  <img src="docs/assets/GPGS.png" width="720" alt="GPGS">
+</p>
 
 ---
 
