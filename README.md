@@ -130,7 +130,7 @@ flowchart LR
   📄 [FirebaseAuth_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs)
   
 <p align="center">
-  <img src="docs/assets/firebase.png" width="720" alt="게임 대표 이미지">
+  <img src="docs/assets/Firebase.png" width="720" alt="Firebase 이미지">
 </p>
 
 ---
