@@ -163,10 +163,6 @@ flowchart LR
 - **총알 발사 코드 (FirePos 사용)**  
   📄 [ShootCtrl.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/ShootCtrl.cs)
 
-📌 **추천 삽입 포인트**  
-- //`ShootCtrl.FindNearestEnemy()` 코드 조각
-- //총알 발사 코드 (FirePos 사용)  
-
 ---
 
 ### 4) 오브젝트 풀링
@@ -177,10 +173,6 @@ flowchart LR
 - **풀링 매니저 (`Get` / `Return`)**  
   📄 [BulletPool_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/BulletPool_Mgr.cs)  
   📄 [EXPPool_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/EXPPool_Mgr.cs)
-
-📌 **추천 삽입 포인트**  
-- //풀링 매니저 코드 조각 (`Get`/`Return`)  
-- 풀링 구조 이미지 (`docs/assets/pooling.png`)
 
 ---
 
@@ -196,10 +188,9 @@ flowchart LR
 - **FireBall_FF 추가 발사 처리**  
   📄 [Skill_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/Skill_Mgr.cs)
   
-📌 **추천 삽입 포인트**  
-- //`GlobalValue.AddExp()` 코드 조각  
-- //FireBall_FF 추가 발사 처리 코드  
-- 레벨업/스킬 선택 UI 캡처 (`docs/assets/levelup-skill.png`)
+<p align="center">
+  <img src="docs/assets/레벨업UI.png" width="720" alt="레벨업 UI">
+</p>
 
 ---
 
