@@ -137,8 +137,6 @@ flowchart LR
 
 - **Firebase Auth 로그인 코드 예시**  
   📄 [FirebaseAuth_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs)
-   **Firebase Auth 로그인 코드 예시**  
-  📄 [FirebaseAuth_Mgr.cs — 로그인 부분](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/FirebaseAuth_Mgr.cs#L10-L30)
   
 📌 **추천 삽입 포인트**  
 - Firestore에 저장된 JSON 문서 예시  
