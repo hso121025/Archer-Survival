@@ -189,7 +189,7 @@ flowchart LR
   📄 [Skill_Mgr.cs](https://github.com/hso121025/Archer-Survival/blob/main/Assets/02.Scripts/Skill_Mgr.cs)
   
 <p align="center">
-  <img src="docs/assets/레벨업UI.png" width="720" alt="레벨업 UI">
+  <img src="docs/assets/레벨업.png" width="720" alt="레벨업 UI">
 </p>
 
 ---
