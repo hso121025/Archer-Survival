@@ -227,7 +227,7 @@ flowchart LR
 </p>
 
 <p align="center">
-  <img src="docs/assets/GPGS.png" width="720" alt="GPGS">
+  <img src="docs/assets/gpgs.png" width="720" alt="GPGS">
 </p>
 
 ---
