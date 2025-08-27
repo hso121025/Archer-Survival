@@ -232,6 +232,68 @@ flowchart LR
 
 ---
 
+## 문제 해결 사례 (Troubleshooting Cases)
+
+### 1) Firebase 초기화 실패 (`google-services.json` 누락)
+- **문제:**  
+  안드로이드 빌드 시 `Unable to load Firebase app options...` 오류 발생.  
+  `StreamingAssets/google-services.json` 경로를 Unity가 인식하지 못해 초기화 실패.  
+- **해결 노력:**  
+  - `Assets/StreamingAssets` 폴더 생성 후 `google-services.json` 직접 배치  
+  - 에디터 전용 `Editor` 스크립트 작성 → 빌드 시 자동 복사되도록 개선  
+- **결과:**  
+  Firebase Auth/Firestore 초기화 성공, 안드로이드 기기에서도 정상 로그인 가능  
+
+---
+
+### 2) GPGS & Gradle 충돌 (`compileSdkVersion` 불일치)
+- **문제:**  
+  GPGS v0.11.01 추가 후 Gradle 빌드 시  
+checkReleaseAarMetadata
+compileSdkVersion is lower than required
+오류 발생.  
+- **해결 노력:**  
+- Unity `2022.3.15f1` 환경에서 `gradle.properties` 수정  
+- `android.suppressUnsupportedCompileSdk=34` 추가  
+- Android SDK API Level 32 → 34로 상향 조정  
+- **결과:**  
+GPGS 로그인/업적/리더보드 기능 정상 동작  
+
+---
+
+### 3) 프레임 드랍 (총알/몬스터 `Destroy()` 남발)
+- **문제:**  
+몬스터 다수 등장 시 `Destroy()` 반복 호출로 GC 부하 → 프레임 급격히 하락  
+- **해결 노력:**  
+- 총알, 몬스터, EXP, 아이템 전부 오브젝트 풀링으로 전환  
+- `OnEnable/OnDisable`에서 상태 초기화 처리  
+- **결과:**  
+FPS 드랍 현상 개선, 500마리 동시 스폰 환경에서도 60FPS 유지  
+
+---
+
+### 4) Firebase 로그인 예외 처리
+- **문제:**  
+이미 가입된 이메일 재가입 시 `AggregateException` 발생 → 앱 강제 종료  
+- **해결 노력:**  
+- `task.IsFaulted` 시 예외 메시지 출력 + UI 안내  
+- 로그인/회원가입 버튼 로직 분리  
+- **결과:**  
+사용자 경험 개선, 중복 계정 문제 예방  
+
+---
+
+### 5) Boss 패턴 충돌 문제
+- **문제:**  
+보스의 360도 탄막 발사 패턴이 Player Layer와 충돌하지 않음  
+- **해결 노력:**  
+- `Physics Layer Collision Matrix` 재설정  
+- Bullet Prefab Layer 재검증  
+- **결과:**  
+보스 탄막 정상 작동, 난이도 의도대로 구현 성공  
+
+---
+
 ## 향후 계획
 - **멀티플레이 지원** (실시간/협동 모드)  
 - **콘텐츠 확장**: 신규 보스/스테이지, 이벤트 시스템  
