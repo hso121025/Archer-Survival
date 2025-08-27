@@ -206,14 +206,6 @@ flowchart LR
 
 ---
 
-## 문제 해결
-- **Firebase 초기화 실패:** `google-services.json` 경로/포맷 수정  
-- **GPGS/Gradle 충돌:** `compileSdkVersion` 조정, gradle.properties 수정  
-- **프레임 드랍:** `Destroy()` 남발 → 풀링 전환  
-- **AI 타겟팅 문제:** 캐싱 및 널 가드 처리  
-
----
-
 ## 빌드 & 배포
 - **환경:** Unity 2022.3.15f1 · Android SDK API 32+  
 - **절차:**  
@@ -243,6 +235,14 @@ flowchart LR
   - 에디터 전용 `Editor` 스크립트 작성 → 빌드 시 자동 복사되도록 개선  
 - **결과:**  
   Firebase Auth/Firestore 초기화 성공, 안드로이드 기기에서도 정상 로그인 가능  
+
+---
+
+## 문제 해결
+- **Firebase 초기화 실패:** `google-services.json` 경로/포맷 수정  
+- **GPGS/Gradle 충돌:** `compileSdkVersion` 조정, gradle.properties 수정  
+- **프레임 드랍:** `Destroy()` 남발 → 풀링 전환  
+- **AI 타겟팅 문제:** 캐싱 및 널 가드 처리  
 
 ---
 
