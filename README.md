@@ -280,7 +280,21 @@ FPS 드랍 현상 개선, 500마리 동시 스폰 환경에서도 60FPS 유지
 - `task.IsFaulted` 시 예외 메시지 출력 + UI 안내  
 - 로그인/회원가입 버튼 로직 분리  
 - **결과:**  
-사용자 경험 개선, 중복 계정 문제 예방  
+사용자 경험 개선, 중복 계정 문제 예방
+
+---
+
+### 5) AI 타겟팅 문제
+- **문제:**  
+- `ShootCtrl`이 `Update()`마다 `GameObject.FindGameObjectsWithTag("Monster")`를 호출 → 몬스터 수가 많아지면 프레임 드랍 발생  
+- 몬스터가 풀로 반환된 직후에도 참조를 유지 → `NullReferenceException` 오류 다수 발생  
+- **해결 노력:**  
+- 탐색 최적화: 일정 주기(0.2초 간격)마다만 탐색, `Physics.OverlapSphere`로 범위 내 몬스터만 확인  
+- 캐싱 처리: 유효한 타겟이 있으면 유지, 죽거나 멀어졌을 때만 새 탐색  
+- 널 가드: `if (targetEnemy == null || !targetEnemy.activeSelf)` 조건 추가  
+- **결과:**  
+- 다수 몬스터 스폰 환경에서도 FPS 안정화  
+- `NullReferenceException` 제거, 자동 타겟팅이 안정적으로 동작  
 
 ---
 
