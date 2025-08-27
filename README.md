@@ -18,7 +18,6 @@
   - [4) 오브젝트 풀링](#4-오브젝트-풀링)
   - [5) 레벨업/스킬 시스템](#5-레벨업스킬-시스템)
 - [최적화 포인트](#최적화-포인트)
-- [문제 해결](#문제-해결)
 - [문제 해결 사례](#문제-해결-사례-troubleshooting-cases)
 - [빌드 & 배포](#빌드--배포)
 - [향후 계획](#향후-계획)
@@ -222,14 +221,6 @@ flowchart LR
 <p align="center">
   <img src="docs/assets/gpgs.png" width="720" alt="GPGS">
 </p>
-
----
-
-## 문제 해결
-- **Firebase 초기화 실패:** `google-services.json` 경로/포맷 수정  
-- **GPGS/Gradle 충돌:** `compileSdkVersion` 조정, gradle.properties 수정  
-- **프레임 드랍:** `Destroy()` 남발 → 풀링 전환  
-- **AI 타겟팅 문제:** 캐싱 및 널 가드 처리  
 
 ---
 
