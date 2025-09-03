@@ -29,8 +29,12 @@
 - **장르:** 모바일 생존형 액션 RPG  
 - **핵심 목표:** Firebase + GPGS로 계정/데이터/업적 안정 연동, 오브젝트 풀링으로 저사양 기기에서도 프레임 안정화, 자동 전투 + 레벨업 + 스킬 선택으로 빠른 성장감 제공  
 
+**플레이 영상 보러가기:** https://www.youtube.com/watch?v=VIDEO_ID
+
 <p align="center">
-  <img src="docs/assets/hero.png" width="720" alt="게임 대표 이미지">
+  <a href="https://youtu.be/-LF06R6aT8g">
+    <img src="docs/assets/hero.png" width="720" alt="Archer Survival 플레이 영상 (클릭 시 재생)">
+  </a>
 </p>
 
 ---
